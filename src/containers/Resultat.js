@@ -4,22 +4,15 @@ import { bindActionCreators } from 'redux'
 import {getData} from "../actions/index"
 import ListItem from "../components/list_item"
 
-class SearchBar extends Component{
+class Resultat extends Component{
     constructor(props){
         super(props);
     }
 
-    componentWillMount(){
-        this.props.getData()
-    }
-
-    search(e){
-        this.props.getData(e.target.value)
-    }
     
     renderResult(){
         const results = this.props.results;
-        if(results){
+        if(results){ 
             return results.map((result) => {
                 return <ListItem key={result.id.videoId} result={result}/>
             })}
@@ -27,10 +20,10 @@ class SearchBar extends Component{
 
     render(){
         return (
-            <div className="header">
-                <div className="search">
-                    <input type="text" onChange={(e) => this.search(e)} placeholder="Rechercher ..."/>
-                </div>
+            <div className="tracks">
+                <ul className="list-group">
+                    {this.renderResult()}
+                </ul>
             </div>
         )
     }
@@ -41,8 +34,5 @@ function mapStateToProps(state) {
     }
 }
 
-function mapDispatchToProps(dispatch){
-    return bindActionCreators({getData}, dispatch)
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(SearchBar)
+export default connect(mapStateToProps)(Resultat)

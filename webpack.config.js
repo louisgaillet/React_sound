@@ -8,13 +8,19 @@ module.exports = {
     filename: 'bundle.js'
   },
   module: {
-    loaders: [{
+    loaders: [
+      {
       exclude: /node_modules/,
       loader: 'babel',
       query: {
         presets: ['react', 'es2015', 'stage-1']
       }
-    }]
+    },
+    {
+      test:/\.(s*)css$/,
+      use:['style-loader','css-loader', 'sass-loader']
+    }
+  ]
   },
   resolve: {
     extensions: ['', '.js', '.jsx']
@@ -24,3 +30,4 @@ module.exports = {
     contentBase: './'
   }
 };
+

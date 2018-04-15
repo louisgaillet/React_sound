@@ -1,0 +1,223 @@
+body{
+    background-color: #181818 !important;
+    font-family: 'Roboto', sans-serif !important;
+    font-size: 14px;
+    line-height: 1.42857143;
+}
+
+
+#app{
+    padding: 0;
+}
+
+/* CONTENT */
+
+.content{
+    display: flex;
+    flex-flow: row wrap;
+    height: 81vh;
+    overflow: none;
+}
+
+.main-view-container{
+    overflow: scroll;
+}
+
+/* NAVBAR */
+
+.nav-bar-container{
+    background-color: black;
+    height: 100%;
+    z-index: 100;
+    background-color: rgba(0,0,0,.5);
+    overflow: auto;
+    min-height: 0!important;
+    will-change: transform;
+}
+
+.search input {
+    border-radius: 15px;
+    border: none;
+    background: white;
+    color: #181818;
+    padding-left: 30px;
+    outline: none;
+    background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/7022/ios-search.svg);
+    background-repeat: no-repeat;
+    background-size: 10%;
+    background-position: 5px;
+}
+
+.small-picture{
+    width: 42px;
+    height: 42px;
+    object-fit: cover;
+    border: 0.5px solid #282828;
+}
+
+.medium-picture{
+    width: 62px;
+    height: 62px;
+    object-fit: cover;
+    border: 1px solid white;
+}
+
+.header{
+    background: #282828;
+    padding: 10px;
+    color: #aaaaaa;
+    border-bottom: 1px solid #181818;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    height: 9vh;
+}
+.tracks{
+    margin-top: 39px;
+}
+
+.tracks .track{
+    background-color: #181818;
+    color: white;
+    border: none;
+    border-top: 1px solid #282828;
+}
+
+.tracks .track .play {
+    font-size: 0.7rem;
+    margin-right:13px; 
+    width: 30px;
+    height: 30px;
+    border: 1px solid white;
+    border-radius: 100%;
+    opacity: 0;
+    transition : all .2s ease;
+    cursor: pointer;
+}
+
+.tracks .track .play i {
+    padding-left: 2px;
+}
+
+.tracks .track:hover{
+    background-color: #282828;
+}
+
+.tracks .track:hover .play{
+    opacity: 1;;
+}
+.track__title{
+    margin-left: 13px;
+}
+.track__title::first-letter{
+    text-transform: uppercase;
+}
+
+
+/* PLAYER REACT */
+
+.react-player{
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    width: 200px !important;
+    height: 200px !important;
+}
+
+
+/* CURRENT TRACK */
+
+.current-track{
+    background: #282828;
+    padding: 5px 15px;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    height: 10vh;
+}
+.current-track__left{
+    width: 30%;
+    color: white;
+}
+.current-track__actions {
+    width: 40%;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -ms-flex-align: center;
+    align-items: center;
+    color: white;
+}
+
+.current-track__actions .player-controls_buttons{
+    margin-bottom: 12px;
+    display: -ms-flexbox;
+    display: flex;
+    width: 224px;
+    -ms-flex-pack: justify;
+    justify-content: center;
+    -ms-flex-flow: row nowrap;
+    flex-flow: row nowrap;
+}
+
+.current-track__actions .player-controls_buttons a {
+    color: white;
+    margin: auto 8px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.current-track__actions .player-controls_buttons .play{
+    border: 1px solid white;
+    width: 33px;
+    height: 33px;
+    border-radius: 100%;
+    text-align: center;
+    line-height: 32px;
+}
+
+.current-track__actions .player-controls_buttons .play .fa-play {
+    padding-left: 4px;
+    padding-top: 4px;
+}
+
+.current-track__right{
+    width: 30%;
+}
+
+.custom-progress-bar{
+    position: relative;
+    width: 200px;
+    min-height: 15px;
+}
+
+.custom-progress-bar progress{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 0;
+    width: 100%;
+}
+
+.custom-progress-bar input.with-progress{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    -webkit-appearance: none;  /* Override default CSS styles */
+    appearance: none;
+    width: 100%; /* Full-width */
+    background: none; /* Grey background */
+    -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+    transition: opacity .2s;
+    z-index: 2;
+    opacity: 0;
+    transition : all .5s ease;
+}
+
+.custom-progress-bar:hover input.with-progress{
+    opacity: 1;
+}
+
