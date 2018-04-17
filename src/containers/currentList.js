@@ -13,8 +13,7 @@ class CurrentList extends Component {
         var results = this.props.currentList
         if (results) {
             return (results.map((result) => {
-                // return <ListItem key={result.id.videoId} result={result} clickOnItem={true}/>
-                return 'yoo'
+                return <ListItem key={Math.random()} result={result} clickOnItem={true}/>
             }))
         }
     }

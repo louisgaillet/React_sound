@@ -10,10 +10,10 @@ export default class App extends Component {
       <div>
         <SearchBar/>
         <div className="content layout horizontal">
-          <div className="nav-bar-container col-md-3">
-            {/* <CurrentList/> */}
+          <div className="nav-bar-container col-lg-2 col-md-3">
+            <CurrentList/>
           </div>
-          <div className="main-view-container col-md-9">
+          <div className="main-view-container col-lg-10 col-md-9">
             <Resultat/>
           </div>
         </div>

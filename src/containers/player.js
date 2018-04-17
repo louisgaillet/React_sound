@@ -51,6 +51,9 @@ class  Player extends Component {
     renderPlayer(){
         const {currentList} = this.props;
         var {player} = this.props;
+        var style = {
+            width: (this.state.played * 100 + '%')
+        }
         if(currentList.length >= 1 ){
             var id = currentList[0].id.videoId;
         }else{
@@ -70,8 +73,9 @@ class  Player extends Component {
                             </a>
                             <a><i className="fa fa-step-forward"></i></a>  
                         </div>
-                        <div className="playback-bar d-flex justify-content-between ">
+                        <div className="playback-bar d-flex justify-content-between align-items-center">
                             <div className="playback-bar__progress-time"> <Duration seconds={this.state.duration * this.state.played} /></div>
+                           
                             <div className="custom-progress-bar flex">
                                 <input
                                     className = "with-progress"
@@ -82,7 +86,9 @@ class  Player extends Component {
                                     onChange={this.onSeekChange}
                                     onMouseUp={this.onSeekMouseUp}
                                 />
-                                <progress  max={1} value={this.state.played} />
+                                 <div className="progress">
+                                    <div className="progress-bar  bg-success" role="progressbar" style={style} aria-valuenow={this.state.played *100} aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
                             </div>
                             <div className="playback-bar__progress-time"> <Duration seconds={this.state.duration} /></div> 
                         </div>

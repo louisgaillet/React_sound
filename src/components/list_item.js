@@ -10,32 +10,45 @@ class ListItem extends Component{
     }
 
     play(item){
-        console.log('yoo');
         this.props.addToCurrentList(item);
     }
 
     render(){
         const result = this.props.result;
         const {clickOnItem} = this.props;
-        return(
-            <li 
-                className="list-group-item  track d-flex flex-row align-items-center">
-            {!clickOnItem ? 
+
+        if(!clickOnItem){
+            return(
+                <li className="list-group-item  track d-flex flex-row align-items-center">
                     <span className="play layout vertical center center-center"
                         onClick={(e) => this.play(this.props.result)}>
                         <i className="fa fa-play"></i>
                     </span>  
-            :''} 
-                <span className=""> 
-                    <span className="wrapper-image">
-                        <img className="small-picture" src={result.snippet.thumbnails.default.url}/>
-                    </span> 
-                </span>
-                <span className="track__title">
-                    {result.snippet.title.toLowerCase()}    
-                </span>
-            </li>
-        )
+                    <span className=""> 
+                        <span className="wrapper-image">
+                            <img className="small-picture" src={result.snippet.thumbnails.default.url}/>
+                        </span> 
+                    </span>
+                    <span className="track__title">
+                        {result.snippet.title.toLowerCase()}    
+                    </span>
+                </li>
+            )
+        }else{
+            return(
+                <li className="list-group-item  track d-flex flex-row align-items-center"
+                onClick={(e) => this.play(this.props.result)}> 
+                    <span className=""> 
+                        <span className="wrapper-image">
+                            <img className="small-picture" src={result.snippet.thumbnails.default.url}/>
+                        </span> 
+                    </span>
+                    <span className="track__title">
+                        {result.snippet.title.toLowerCase()}    
+                    </span>
+                </li>
+            )
+        }
     }
 };
 
