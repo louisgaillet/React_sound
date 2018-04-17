@@ -44,9 +44,8 @@ class  Player extends Component {
     }
 
     onDuration = (duration) => {
-        console.log(duration);
         this.setState({ duration })
-      }
+    }
 
 
     renderPlayer(){
@@ -90,7 +89,7 @@ class  Player extends Component {
                     </div>
                 
                     <div className="current-track__right"></div>
-                    </div> 
+                </div> 
                 <ReactPlayer 
                     ref={this.ref}
                     className='react-player' 

@@ -10,6 +10,17 @@ body{
     padding: 0;
 }
 
+h2{
+
+    font-size: 11px;
+    line-height: 16px;
+    letter-spacing: .015em;
+    font-weight: 200;
+    text-transform: uppercase;
+    letter-spacing: .16em;
+    color: hsla(0,0%,100%,.6);
+    padding: 7px 0;
+}
 /* CONTENT */
 
 .content{
@@ -76,7 +87,8 @@ body{
     margin-top: 39px;
 }
 
-.tracks .track{
+.tracks .track,
+.current_list .track{
     background-color: #181818;
     color: white;
     border: none;
@@ -113,9 +125,28 @@ body{
     text-transform: uppercase;
 }
 
+/* CURRENT_LIST */
+.current_list{
+    height: 213px;
+    overflow: scroll;
+    padding-left:0; 
+    margin-top: 0;
+}
+.current_list .track{
+    cursor: pointer;
+    background-color: transparent;
+}
 
 /* PLAYER REACT */
-
+.player{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    min-height: 13vh;
+    z-index: 333;
+}
 .react-player{
     position: absolute;
     bottom: 5px;
@@ -133,7 +164,7 @@ body{
     display: flex;
     flex-flow: row wrap;
     align-items: center;
-    height: 10vh;
+    min-height: 13vh;
 }
 .current-track__left{
     width: 30%;

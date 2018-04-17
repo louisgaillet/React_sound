@@ -6,19 +6,26 @@ import {addToCurrentList} from "../actions/index"
 class ListItem extends Component{
     constructor(props){
         super(props);
+        const {clickOnItem} = this.props;
     }
 
     play(item){
+        console.log('yoo');
         this.props.addToCurrentList(item);
     }
+
     render(){
         const result = this.props.result;
+        const {clickOnItem} = this.props;
         return(
-            <li className="list-group-item  track d-flex flex-row align-items-center">
-                <span className="play layout vertical center center-center"
-                onClick={(e) => this.play(this.props.result)}>
-                    <i className="fa fa-play"></i>
-                </span>  
+            <li 
+                className="list-group-item  track d-flex flex-row align-items-center">
+            {!clickOnItem ? 
+                    <span className="play layout vertical center center-center"
+                        onClick={(e) => this.play(this.props.result)}>
+                        <i className="fa fa-play"></i>
+                    </span>  
+            :''} 
                 <span className=""> 
                     <span className="wrapper-image">
                         <img className="small-picture" src={result.snippet.thumbnails.default.url}/>

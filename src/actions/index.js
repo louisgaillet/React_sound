@@ -6,9 +6,9 @@ export const PLAY_LECTEUR = 'PLAY_LECTEUR'
 const API_END_POINT = "https://www.googleapis.com/youtube/v3/search"
 const API_KEY = "?key=AIzaSyAsM52E5tQqtI1_aVhdUSRLtoSQCj5r3L4"
 
-export function getData(search){
+export function getData(search="the strokes"){
      return function (dispatch) {
-        axios.get(`${API_END_POINT}/${API_KEY}&part=snippet&maxResults=25&type=video&q=${search}`)
+        axios.get(`${API_END_POINT}/${API_KEY}&part=snippet&maxResults=50&type=video&q=${search}`)
         .then(function(response){
             dispatch({type : GET_DATA,payload:response.data.items})
         })
