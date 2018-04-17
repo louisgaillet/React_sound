@@ -1,7 +1,6 @@
 import React from 'react'
 
 export default function Duration ({ className, seconds }) {
-    console.log('yep');
   return (
     <time dateTime={`P${Math.round(seconds)}S`} className={className}>
       {format(seconds)}
