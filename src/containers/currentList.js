@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
 import {connect} from "react-redux"
 import { bindActionCreators } from 'redux'
+import {Link } from 'react-router-dom'
+
 import ListItem from "../components/list_item"
+import * as routes from '../config/routes'
 
 class CurrentList extends Component {
     constructor(props) {
@@ -21,7 +24,7 @@ class CurrentList extends Component {
     render() {
         return (
             <div>
-                {this.props.currentList.length > 0 ? <h2>Liste d'attente</h2>:''}
+                {this.props.currentList.length > 0 ? <h2> <Link to={routes.currentList}>Liste d'attente </Link></h2>:''}
                 <ul className="current_list tracks">
                     {this.renderCurrentList()}
                 </ul>
