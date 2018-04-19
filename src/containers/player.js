@@ -50,12 +50,13 @@ class  Player extends Component {
 
     renderPlayer(){
         const {currentList} = this.props;
+        const {currentSong} = this.props;
         var {player} = this.props;
         var style = {
             width: (this.state.played * 100 + '%')
         }
-        if(currentList.length >= 1 ){
-            var id = currentList[0].id.videoId;
+        if(currentSong){
+            var id = currentSong.id.videoId;
         }else{
             var id = 'oUFJJNQGwhk';
         }
@@ -63,7 +64,7 @@ class  Player extends Component {
             <div>
                 <div className="current-track">
                     <div className="current-track__left">
-                        <DetailCurrent currentDetail={currentList[0]}/>
+                        <DetailCurrent currentDetail={currentSong}/>
                     </div>
                     <div className="current-track__actions">
                         <div className="player-controls_buttons">
@@ -128,6 +129,7 @@ class  Player extends Component {
 function mapStateToProps(state) {
     return {
         currentList: state.currentList,
+        currentSong: state.currentSong,
         player : state.player
     }
 }

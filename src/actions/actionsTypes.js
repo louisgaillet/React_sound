@@ -1,0 +1,1 @@
+export const ADD_TO_CURRENT_SONG = 'ADD_TO_CURRENT_SONG';

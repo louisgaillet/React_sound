@@ -14,7 +14,7 @@ class Resultat extends Component{
         const results = this.props.results;
         if(results){ 
             return results.map((result) => {
-                return <ListItem key={result.id.videoId} result={result}/>
+                return <ListItem key={result.id.videoId + Math.floor(Math.random() * 11)} result={result}/>
             })}
         }
 

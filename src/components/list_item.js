@@ -1,7 +1,7 @@
 import React,{Component} from 'react'
 import {connect} from "react-redux"
 import { bindActionCreators } from 'redux'
-import {addToCurrentList} from "../actions/index"
+import {addToCurrentList, addToCurrentSong} from "../actions/index"
 
 class ListItem extends Component{
     constructor(props){
@@ -9,8 +9,12 @@ class ListItem extends Component{
         const {clickOnItem} = this.props;
     }
 
-    play(item){
+    playAndAdd(item){
         this.props.addToCurrentList(item);
+    }
+
+    play(item){
+        this.props.addToCurrentSong(item);
     }
 
     render(){
@@ -21,7 +25,7 @@ class ListItem extends Component{
             return(
                 <li className="list-group-item  track d-flex flex-row align-items-center">
                     <span className="play layout vertical center center-center"
-                        onClick={(e) => this.play(this.props.result)}>
+                        onClick={(e) => this.playAndAdd(this.props.result)}>
                         <i className="fa fa-play"></i>
                     </span>  
                     <span className=""> 
@@ -29,7 +33,7 @@ class ListItem extends Component{
                             <img className="small-picture" src={result.snippet.thumbnails.default.url}/>
                         </span> 
                     </span>
-                    <span className="track__title">
+                    <span className="track__title text-truncate">
                         {result.snippet.title.toLowerCase()}    
                     </span>
                 </li>
@@ -59,7 +63,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch){
-    return bindActionCreators({addToCurrentList},dispatch)
+    return bindActionCreators({addToCurrentList, addToCurrentSong},dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ListItem);
