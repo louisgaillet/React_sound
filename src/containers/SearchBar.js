@@ -2,6 +2,7 @@ import React,{Component} from 'react'
 import {connect} from "react-redux"
 import { bindActionCreators } from 'redux'
 import { Redirect } from 'react-router';
+import { withRouter } from "react-router-dom";
 
 import {getData} from "../actions/index"
 import ListItem from "../components/list_item"
@@ -18,7 +19,7 @@ class SearchBar extends Component{
 
     search(e){
         this.props.getData(e.target.value)
-        this.context.router.push(routes.resultat);
+        this.props.history.push(routes.resultat);
     }
     
     renderResult(){
@@ -49,4 +50,4 @@ function mapDispatchToProps(dispatch){
     return bindActionCreators({getData}, dispatch)
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SearchBar)
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(SearchBar))
