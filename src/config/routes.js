@@ -1,4 +1,5 @@
 export const home = '/'
-export const app = '/app'
-    export const resultat = '/app/results'
-    export const currentList = '/app/current-list'
+export const LOGIN = '/login'
+export const APP = '/app'
+    export const RESULTS = '/app/results'
+    export const CURRENTLIST = '/app/current-list'

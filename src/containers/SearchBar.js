@@ -1,9 +1,9 @@
 import React,{Component} from 'react'
 import {connect} from "react-redux"
 import { bindActionCreators } from 'redux'
-import { Redirect } from 'react-router';
 import { withRouter } from "react-router-dom";
 
+import {auth, base} from '../firebase/base'
 import {getData} from "../actions/index"
 import ListItem from "../components/list_item"
 import * as routes from '../config/routes'
@@ -13,13 +13,10 @@ class SearchBar extends Component{
         super(props);
     }
 
-    componentWillMount(){
-        this.props.getData()
-    }
 
     search(e){
         this.props.getData(e.target.value)
-        this.props.history.push(routes.resultat);
+        this.props.history.push(routes.RESULTS);
     }
     
     renderResult(){
@@ -38,6 +35,10 @@ class SearchBar extends Component{
                 </div>
             </div>
         )
+    }
+
+    componentWillUnmount(){
+        this.removeAuthListener();
     }
 }
 function mapStateToProps(state) {

@@ -7,14 +7,22 @@ class ListItem extends Component{
     constructor(props){
         super(props);
         const {clickOnItem} = this.props;
+        this.state = {
+            dropdownVisible :false
+        }
     }
 
     playAndAdd(item){
+        this.props.addToCurrentList(item);
         this.props.addToCurrentList(item);
     }
 
     play(item){
         this.props.addToCurrentSong(item);
+    }
+
+    addToCurrentList(item){
+        this.props.addToCurrentList(item);
     }
 
     render(){
@@ -25,7 +33,7 @@ class ListItem extends Component{
             return(
                 <li className="list-group-item  track d-flex flex-row align-items-center">
                     <span className="play layout vertical center center-center"
-                        onClick={(e) => this.playAndAdd(this.props.result)}>
+                        onClick={(e) => this.play(this.props.result)}>
                         <i className="fa fa-play"></i>
                     </span>  
                     <span className=""> 
@@ -33,9 +41,17 @@ class ListItem extends Component{
                             <img className="small-picture" src={result.snippet.thumbnails.default.url}/>
                         </span> 
                     </span>
-                    <span className="track__title text-truncate">
+                    <span className="track__title text-truncate large">
                         {result.snippet.title.toLowerCase()}    
                     </span>
+                    <button className="no-background no-border text-white ml-1 options"
+                    onClick={(e) => this.addToCurrentList(this.props.result)}>
+                    <i className="fas fa-hand-point-right"></i>
+                    </button>
+                    <button className="no-background no-border text-white ml-1 options"
+                    onClick={(e) => this.props.menuContext(e)}>
+                    <i className="fas fa-plus"></i>
+                    </button>
                 </li>
             )
         }else{

@@ -15,6 +15,14 @@ a, a:hover{
     padding: 0;
 }
 
+/* Header */
+
+.user{
+    color: white;
+    position: absolute;
+    right: 13px;
+    top: 6px;
+}
 /* PROGRESSBAR */
 .progress{
     height: 4px;
@@ -41,6 +49,14 @@ h2{
 
 .main-view-container{
     overflow: scroll;
+}
+
+.no-background{
+    background: none;
+}
+
+.no-border {
+    border: none;
 }
 
 /* NAVBAR */
@@ -113,7 +129,7 @@ h2{
     margin-right:13px; 
     width: 30px;
     height: 30px;
-    border: 1px solid white;
+    /* border: 1px solid white; */
     border-radius: 100%;
     opacity: 0;
     transition : all .2s ease;
@@ -123,20 +139,55 @@ h2{
 .tracks .track .play i {
     padding-left: 2px;
 }
+.tracks .track .options{
+    cursor: pointer;
+    opacity: 0;
+    transition : all .5s ease;
+}
 
 .tracks .track:hover{
     background-color: #282828;
 }
 
-.tracks .track:hover .play{
+.tracks .track:hover .play,
+.tracks .track:hover .options
+{
     opacity: 1;;
 }
 .track__title{
     margin-left: 13px;
 }
+
+.track__title.large{
+    width: 400px;
+}
 .track__title::first-letter{
     text-transform: uppercase;
 }
+
+.context-menu{
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 30%;
+    z-index: 333;
+    min-height: 112px;
+    padding: 30px;
+    min-width: 160px;
+    padding: 5px 0;
+    margin: 2px 0 0;
+    color: hsla(0,0%,100%,.6);
+    text-align: left;
+    background-color: #282828;
+    background-clip: padding-box;
+    border: 1px solid rgba(0,0,0,.15);
+    border-radius: .25rem;
+    outline: none;
+    pointer-events: none;
+    /* opacity: 0; */
+    z-index: 1003;
+}
+
 
 /* CURRENT_LIST */
 .current_list{
@@ -166,6 +217,8 @@ h2{
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
     background-color: #F5F5F5;
 }
+
+
 
 /* PLAYER REACT */
 .player{

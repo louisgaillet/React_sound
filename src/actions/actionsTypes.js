@@ -1,1 +1,3 @@
 export const ADD_TO_CURRENT_SONG = 'ADD_TO_CURRENT_SONG';
+export const IS_CONNECTED = 'IS_CONNECTED'
+export const GET_USER = 'GET_USER'

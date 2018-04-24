@@ -24,7 +24,7 @@ class CurrentList extends Component {
     render() {
         return (
             <div>
-                {this.props.currentList.length > 0 ? <h2> <Link to={routes.currentList}>Liste d'attente </Link></h2>:''}
+                {this.props.currentList.length > 0 ? <h2> <Link to={routes.CURRENTLIST}>Liste d'attente </Link></h2>:''}
                 <ul className="current_list tracks">
                     {this.renderCurrentList()}
                 </ul>
