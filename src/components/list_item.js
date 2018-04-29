@@ -49,7 +49,7 @@ class ListItem extends Component{
                     <i className="fas fa-hand-point-right"></i>
                     </button>
                     <button className="no-background no-border text-white ml-1 options"
-                    onClick={(e) => this.props.menuContext(e)}>
+                    onClick={(e) => this.props.menuContext(this.props.result)}>
                     <i className="fas fa-plus"></i>
                     </button>
                 </li>

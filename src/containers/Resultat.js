@@ -1,33 +1,38 @@
 import React,{Component} from 'react'
 import {connect} from "react-redux"
 import { bindActionCreators } from 'redux'
-import {getData} from "../actions/index"
+import {auth, base} from '../firebase/base'
+
+import {isConnected} from "../actions/index"
+import GestionPlaylist from './gestionPlaylist'
 import ListItem from "../components/list_item"
+import PlayListItem from '../components/play_list_item'
 
 class Resultat extends Component{
     constructor(props){
         super(props);
         this.state = {
             menuContext : false,
-            menuPositon : {
-
-            }
+            menuAddPlaylist : false,
+            item_selected : '',
+            playlist_selected : '',
         }
     }
 
-    menuContext(e){
-        console.log(e.target);
-        var xPosition = e.clientX;
-        var yPosition = e.clientY;
-        console.log(xPosition);
-        console.log(yPosition);
-        
+    menuContext(item){
         this.setState({
             menuContext : !this.state.menuContext,
-            menuPositon : {top: yPosition - 50}
+            item_selected : item
         })
     }
-    
+
+    closeMenu(){
+        this.setState({
+            menuContext : false,
+        })
+    }
+
+
     renderResult(){
         const results = this.props.results;
         if(results){ 
@@ -37,31 +42,32 @@ class Resultat extends Component{
     }
 
     renderMenuContext(){
-        if(this.state.menuContext === true){
+        if(this.state.menuContext){
             return (
-                <div className="context-menu" style ={this.state.menuPositon}>
-                    Menu        
-                </div>
+                <GestionPlaylist item_selected = {this.state.item_selected} gestionMenu={this.closeMenu.bind(this)}/>
             )
         }
     }
 
     render(){
         return (
-            <div className="tracks">
-             {this.renderMenuContext()}
-                <ul className="list-group">
-                    {this.renderResult()}
-                </ul>
+            <div>
+                {this.renderMenuContext()}
+                <div className="tracks">
+                    <ul className="list-group">
+                        {this.renderResult()}
+                    </ul>
+                </div>
             </div>
         )
     }
+
+
 }
 function mapStateToProps(state) {
     return {
-        results: state.data
+        results: state.data,
     }
 }
-
 
 export default connect(mapStateToProps)(Resultat)

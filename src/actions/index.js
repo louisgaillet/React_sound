@@ -1,9 +1,11 @@
 import axios from 'axios'
+
 export const GET_DATA = 'GET_DATA'
 export const ADD_TO_CURRENT_LIST = 'ADD_TO_CURRENT_LIST'
 export const PLAY_LECTEUR = 'PLAY_LECTEUR'
 import * as types from './actionsTypes'
 import {auth, base} from '../firebase/base'
+
 
 const API_END_POINT = "https://www.googleapis.com/youtube/v3/search"
 const API_KEY = "?key=AIzaSyAsM52E5tQqtI1_aVhdUSRLtoSQCj5r3L4"
@@ -50,5 +52,53 @@ export function isConnected(){
         })
     }
 }
+
+
+export function createPlaylist(user_id,name) {
+    return function(dispatch){
+        let base_playlist = {name : name};
+        // On met à jour
+        const rootRef = base.ref();
+        var ref = base.ref(user_id+'/playlists/');
+        ref.push(base_playlist).then(function(){
+            dispatch({type:types.CREATE_PLAYLIST, payload:'success'})
+          }).catch(function(error) {
+                dispatch({type:types.CREATE_PLAYLIST, payload:error})
+        });
+    }
+}
+
+export function getPlaylists(user_id){
+    return function(dispatch){
+        const rootRef = base.ref();
+        var ref = base.ref(user_id);
+        ref.on("value", function(snapshot) {
+            dispatch({type:types.GET_PLAYLISTS, payload:snapshot.val()})
+          }, function (errorObject) {
+          });
+    }
+}
+
+export function addToPlaylist(user_id,playlist_id, item){
+    return function(dispatch){
+        const rootRef = base.ref();
+            var ref = base.ref(`${user_id}/playlists/${playlist_id}/songs`);
+            ref.push(item).then(function(){
+            }).catch(function(error) {
+            });
+    }
+}
+
+export function getSongsToPlaylists(user_id,playlist_id){
+    return function(dispatch){
+        const rootRef = base.ref();
+        var ref = base.ref(`${user_id}/playlists/${playlist_id}/songs`);
+        ref.on("value", function(snapshot) {
+            dispatch({type:types.GET_SONGS_TO_PLAYLIST, payload:snapshot.val()})
+          }, function (errorObject) {
+          });
+    }
+}
+
 
 

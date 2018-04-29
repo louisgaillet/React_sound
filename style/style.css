@@ -10,9 +10,56 @@ a, a:hover{
     text-decoration: none;
 }
 
+input, input:focus{
+    outline:none !important;
+}
+
 
 #app{
     padding: 0;
+}
+
+
+/*  Couleurs */
+
+.bg-grey{
+    background-color: #282828;
+}
+
+.bg-transparent{
+    background: transparent;
+}
+
+.bg-success, .btn-success{
+    background-color: #1db954;
+}
+
+
+/* Buttons */
+
+.btn{
+    min-width: 130px;
+}
+.btn.btn-transparent{
+    background-color: transparent;
+}
+
+.btn.btn-rounded{
+    border-radius: 29px;
+    font-size: 0.8rem;
+}
+
+.btn-success:hover{
+    background-color: #1db954;
+}
+.btn-success.focus, .btn-success:focus{
+    box-shadow: none;
+}
+
+.btn:not(.disabled):focus, .btn:not(.disabled):hover {
+    transition: none 33ms cubic-bezier(.3,0,0,1);
+    transition-property: all;
+    transform: scale(1.06);
 }
 
 /* Header */
@@ -49,6 +96,7 @@ h2{
 
 .main-view-container{
     overflow: scroll;
+    width: 100%;
 }
 
 .no-background{
@@ -69,11 +117,13 @@ h2{
     overflow: auto;
     min-height: 0!important;
     will-change: transform;
+    width: 25%;
 }
 
 .nav-bar-container .current_list{
     max-height: 213px;
     overflow-y: scroll;
+    overflow-x: hidden;
 }
 .search input {
     border-radius: 15px;
@@ -88,6 +138,38 @@ h2{
     background-position: 5px;
 }
 
+/* Nav barre mobile */
+
+.navbar-mobile{
+    position: fixed;
+    bottom: 92px;
+    left: 0;
+    width: 100%;
+    background: #282828;
+    height: 46px;
+    z-index: 333;
+    border-bottom: 1px solid #000;
+}
+
+.navbar-mobile ul {
+    margin-bottom: 0;
+    height: 100%;
+    padding-left: 0;
+}
+
+.navbar-mobile ul li {
+    list-style: none;
+    margin: 0 26px;
+}
+
+.navbar-mobile ul li i {
+    font-size: 1.2rem;
+}
+
+.navbar-mobile ul li span {
+    font-size: 0.7rem;
+    margin-top: 3px;
+}
 .small-picture{
     width: 42px;
     height: 42px;
@@ -166,26 +248,23 @@ h2{
 }
 
 .context-menu{
-    position: absolute;
+    position: fixed;
     right: 0;
     top: 0;
-    width: 30%;
+    width: 100%;
     z-index: 333;
-    min-height: 112px;
+    height: 100%;
     padding: 30px;
     min-width: 160px;
     padding: 5px 0;
     margin: 2px 0 0;
     color: hsla(0,0%,100%,.6);
     text-align: left;
-    background-color: #282828;
+    background-color: #181818;
     background-clip: padding-box;
     border: 1px solid rgba(0,0,0,.15);
     border-radius: .25rem;
     outline: none;
-    pointer-events: none;
-    /* opacity: 0; */
-    z-index: 1003;
 }
 
 
@@ -227,7 +306,7 @@ h2{
     left: 0;
     width: 100%;
     height: auto;
-    min-height: 13vh;
+    height: 92px;
     z-index: 333;
 }
 .react-player{
@@ -236,6 +315,7 @@ h2{
     right: 5px;
     width: 200px !important;
     height: 200px !important;
+    display: none;
 }
 
 
@@ -396,3 +476,44 @@ input[type=range]::-webkit-slider-thumb {
     background: #ffffff;
     cursor: pointer;
   }
+
+
+  /* Input */
+
+  .inputBox-input {
+    font-size: 48px;
+    line-height: 56px;
+    letter-spacing: -.005em;
+    font-weight: 600;
+    color: #fff;
+    text-transform: none;
+    caret-color: #1db954;
+    box-sizing: border-box;
+    width: 100%;
+    background-color: transparent;
+    border: none;
+}
+
+
+/* Playlists */
+.playlists-list{
+    padding: 0;
+}
+
+.playlists-list li {
+    padding-bottom: 2px;
+    padding-top: 2px;
+}
+
+/* 
+@media only screen and (min-width: 600px) {
+    .collapse {
+        display: block;
+    }
+} */
+
+.hidden{
+    width: 0px;
+    transition: all .1s ease;
+    overflow: hidden;
+}
