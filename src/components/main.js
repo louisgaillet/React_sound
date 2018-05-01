@@ -12,7 +12,7 @@ const Main = () => (
       {/* If !connect */}
       <Route path={routes.LOGIN} component={Login}/>
       {/* else */}
-      <Route path={routes.APP} component={wrapperApp}/>
+      <Route path={routes.HOME} component={wrapperApp}/>
     </Switch>
   </main>
 )
