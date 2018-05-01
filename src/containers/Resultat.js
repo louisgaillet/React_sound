@@ -21,6 +21,7 @@ class Resultat extends Component{
 
     // Todo Charger par defaut une playlist
     componentDidMount() {
+        console.log('loading');
         this.props.getData();
     }
 
