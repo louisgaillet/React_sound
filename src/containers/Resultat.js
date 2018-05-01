@@ -3,7 +3,7 @@ import {connect} from "react-redux"
 import { bindActionCreators } from 'redux'
 import {auth, base} from '../firebase/base'
 
-import {isConnected} from "../actions/index"
+import {isConnected, getData} from "../actions/index"
 import GestionPlaylist from './gestionPlaylist'
 import ListItem from "../components/list_item"
 import PlayListItem from '../components/play_list_item'
@@ -17,6 +17,11 @@ class Resultat extends Component{
             item_selected : '',
             playlist_selected : '',
         }
+    }
+
+    // Todo Charger par defaut une playlist
+    componentDidMount() {
+        this.props.getData();
     }
 
     menuContext(item){
@@ -70,4 +75,9 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps)(Resultat)
+function mapDispatchToProps(dispatch){
+    return bindActionCreators({getData}, dispatch)
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Resultat)

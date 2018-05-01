@@ -196,6 +196,7 @@ h2{
 }
 .tracks{
     margin-top: 39px;
+    padding-left: 0;
 }
 
 .tracks .track,
@@ -331,11 +332,10 @@ h2{
     min-height: 13vh;
 }
 .current-track__left{
-    width: 30%;
     color: white;
+    padding: 0;
 }
 .current-track__actions {
-    width: 40%;
     display: -ms-flexbox;
     display: flex;
     -ms-flex-direction: column;
@@ -345,6 +345,7 @@ h2{
     -ms-flex-align: center;
     align-items: center;
     color: white;
+    padding: 0;
 }
 
 .current-track__actions .player-controls_buttons{

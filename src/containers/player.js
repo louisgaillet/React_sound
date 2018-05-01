@@ -63,10 +63,10 @@ class  Player extends Component {
         return ( 
             <div>
                 <div className="current-track">
-                    <div className="current-track__left">
+                    <div className="current-track__left col-xs-6 col-md-4 ">
                         <DetailCurrent currentDetail={currentSong}/>
                     </div>
-                    <div className="current-track__actions">
+                    <div className="current-track__actions  col-xs-6 col-md-4 ">
                         <div className="player-controls_buttons">
                             <a><i className="fa fa-step-backward"></i></a>
                             <a className="play" onClick={this.playPause}>
@@ -94,8 +94,6 @@ class  Player extends Component {
                             <div className="playback-bar__progress-time"> <Duration seconds={this.state.duration} /></div> 
                         </div>
                     </div>
-                
-                    <div className="current-track__right"></div>
                 </div> 
                 <ReactPlayer 
                     ref={this.ref}

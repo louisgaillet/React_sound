@@ -9,8 +9,9 @@ import * as routes from '../config/routes'
 const Main = () => (
   <main>
     <Switch>
-    {/* <Route  path={routes.Home} component={Home}/> */}
+      {/* If !connect */}
       <Route path={routes.LOGIN} component={Login}/>
+      {/* else */}
       <Route path={routes.APP} component={wrapperApp}/>
     </Switch>
   </main>

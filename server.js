@@ -1,0 +1,13 @@
+const express = require('express');
+const path = require('path');
+
+const port = process.env.PORT || 8080;
+const server = express();
+server.use(express.static(__dirname));
+
+server.get("/bonjour", (req, res) => {
+    res.sendFile(path.resolve(__dirname,"index.html"))
+})
+
+server.listen(port);
+console.log('Server en ecoute sur :',port)
