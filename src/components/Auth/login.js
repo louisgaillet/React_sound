@@ -17,7 +17,7 @@ class Login extends Component {
         const password = this.passwordInput.value;
         auth.signInWithEmailAndPassword(email, password)
         .then(() => {
-            this.props.history.push(routes.APP);
+            this.props.history.push(routes.RESULTS);
         })
         .catch(error => {
             console.log(error);
