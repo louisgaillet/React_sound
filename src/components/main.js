@@ -11,7 +11,8 @@ const Main = () => (
     <Switch>
       {/* If !connect */}
       <Route path={routes.HOME} component={Login}/>
-      {/* else */}
+      {/* else */} 
+      
       <Route path={routes.APP} component={wrapperApp}/>
     </Switch>
   </main>
