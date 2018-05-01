@@ -10,9 +10,9 @@ const Main = () => (
   <main>
     <Switch>
       {/* If !connect */}
-      <Route path={routes.LOGIN} component={Login}/>
+      <Route path={routes.HOME} component={Login}/>
       {/* else */}
-      <Route path={routes.HOME} component={wrapperApp}/>
+      <Route path={routes.APP} component={wrapperApp}/>
     </Switch>
   </main>
 )
