@@ -20,6 +20,7 @@ const wrapperApp = () => (
           </div>
           <div className="main-view-container">
                 <Switch>
+                    <Route exact path={routes.HOME} component={Resultat}/> 
                     <Route exact path={routes.RESULTS} component={Resultat}/> 
                     <Route exact path={routes.CURRENTLIST} component={CurrentList}/>
                     <Route  path={routes.DETAILPLAYLIST+'/:id'} component={detailPlaylist}/>
