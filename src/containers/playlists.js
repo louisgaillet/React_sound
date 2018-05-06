@@ -22,7 +22,7 @@ class PlayLists extends Component{
             <div>
                 {this.props.playlists ? 
                 <div>
-                    <h2>Playlists</h2>
+                    <h2 className="pl-1">Playlists</h2>
                     <ul className="text-white playlists-list">
                         {this.renderPlaylists()}
                     </ul>

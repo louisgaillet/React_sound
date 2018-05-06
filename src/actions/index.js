@@ -4,6 +4,7 @@ export const GET_DATA = 'GET_DATA'
 export const ADD_TO_CURRENT_LIST = 'ADD_TO_CURRENT_LIST'
 export const PLAY_LECTEUR = 'PLAY_LECTEUR'
 import * as types from './actionsTypes'
+import * as contexts from '../config/context'
 import {auth, base} from '../firebase/base'
 
 
@@ -21,16 +22,34 @@ export function getData(search="the strokes"){
 
 export function addToCurrentList(item){
     return function(dispatch){
-        // dispatch({type:types.ADD_TO_CURRENT_SONG, payload:item})
         dispatch({type:ADD_TO_CURRENT_LIST, payload:item})
-        // dispatch({type:PLAY_LECTEUR, payload:true})
     }
 }
 
-export function addToCurrentSong(item){
-    return function(dispatch){
+
+
+
+export function addToCurrentSong(item, context=null){
+    return (dispatch, getState) => {
         dispatch({type:types.ADD_TO_CURRENT_SONG, payload:item})
         dispatch({type:PLAY_LECTEUR, payload:true})
+        dispatch({type:types.CONTEXT_LECTEUR, payload:context})
+        const actualContext = getState().contextLecteur;
+        if(actualContext){
+            if(actualContext.name === contexts.PLAYLIST){    
+                var songs = Object.entries(getState().getSongToPlaylist);
+                const currentSong = getState().currentSong;
+                const index = songs.map(function(song) { return song[1].id.videoId}).indexOf(currentSong.id.videoId);
+                const songs_to_add = songs.slice(index);
+                songs_to_add.reverse().forEach(function (item) {
+                        dispatch({type:ADD_TO_CURRENT_LIST, payload:item[1]})
+                });
+                const song_to_remove = songs.reverse().slice(songs.length-index);
+                song_to_remove.forEach(function (song) {
+                    dispatch({type:types.REMOVE_TO_CURRENT_LIST, payload:song[1]})
+                });
+            }
+        }
     }
 }
 
@@ -99,6 +118,27 @@ export function getSongsToPlaylists(user_id,playlist_id){
           });
     }
 }
+
+export function nextSongs(){
+    return (dispatch, getState) => {
+        var currentList = getState().currentList;
+        var currentSong = getState().currentSong;
+        const index = currentList.map(function(song) { return song.id.videoId}).indexOf(currentSong.id.videoId);
+        if(index <= currentList.length)
+            dispatch({type:types.ADD_TO_CURRENT_SONG, payload:currentList[index+1]})
+      }
+}
+
+export function prevSongs(){
+    return (dispatch, getState) => {
+        var currentList = getState().currentList;
+        var currentSong = getState().currentSong;
+        const index = currentList.map(function(song) { return song.id.videoId}).indexOf(currentSong.id.videoId);
+        if(index >= currentList.length)
+            dispatch({type:types.ADD_TO_CURRENT_SONG, payload:currentList[index-1]})
+      }
+}
+
 
 
 

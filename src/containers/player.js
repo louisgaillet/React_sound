@@ -3,7 +3,7 @@ import ReactPlayer from 'react-player'
 import Nouislider from 'react-nouislider';
 import {connect} from "react-redux"
 import { bindActionCreators } from 'redux'
-import {gestionLecteur} from '../actions/index'
+import {gestionLecteur,nextSongs, prevSongs} from '../actions/index'
 import Duration from '../components/player/duration'
 
 import DetailCurrent from '../components/player/detail_current'
@@ -27,6 +27,14 @@ class  Player extends Component {
         this.setState({playing: !this.state.playing}, () => {
             this.props.gestionLecteur(!this.props.player);
         })
+    }
+
+    next = () => {
+        this.props.nextSongs();
+    }
+
+    prev = () => {
+        this.props.prevSongs();
     }
 
     onProgress = state => {
@@ -68,11 +76,11 @@ class  Player extends Component {
                     </div>
                     <div className="current-track__actions  col-xs-6 col-md-4 ">
                         <div className="player-controls_buttons">
-                            <a><i className="fa fa-step-backward"></i></a>
+                            <a onClick={this.prev}><i className="fa fa-step-backward"></i></a>
                             <a className="play" onClick={this.playPause}>
                                 {!player? <i className="fa fa-play"></i> : <i className="fa fa-pause"></i>}
                             </a>
-                            <a><i className="fa fa-step-forward"></i></a>  
+                            <a  onClick={this.next}><i className="fa fa-step-forward"></i></a>  
                         </div>
                         <div className="playback-bar d-flex justify-content-between align-items-center">
                             <div className="playback-bar__progress-time"> <Duration seconds={this.state.duration * this.state.played} /></div>
@@ -128,12 +136,13 @@ function mapStateToProps(state) {
     return {
         currentList: state.currentList,
         currentSong: state.currentSong,
-        player : state.player
+        player : state.player,
+        contextLecteur : state.contextLecteur 
     }
 }
 
 function mapDispatchToProps(dispatch){
-    return bindActionCreators({gestionLecteur},dispatch)
+    return bindActionCreators({gestionLecteur, nextSongs,},dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Player);

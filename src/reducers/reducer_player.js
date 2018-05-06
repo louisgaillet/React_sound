@@ -1,9 +1,28 @@
+import * as types from '../actions/actionsTypes'
 
-import {PLAY_LECTEUR} from "../actions/index.js"
-
-export default function (state=false,action){
+export function play (state=false,action){
     switch(action.type){
-        case PLAY_LECTEUR:
+        case types.PLAY_LECTEUR:
+            return (
+                action.payload
+            )
+    }
+    return state
+}
+
+export function context ( state = false, action){
+    switch(action.type){
+        case types.CONTEXT_LECTEUR:
+            return (
+                action.payload
+            )
+    }
+    return state
+}
+
+export function next (state=false,action){
+    switch(action.type){
+        case types.NEXT_SONG:
             return (
                 action.payload
             )

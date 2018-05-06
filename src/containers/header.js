@@ -23,7 +23,7 @@ class Header extends Component {
         }else{
             return (
                 <div className = "user">
-                    Je suis non connecté
+                    Se connecter
                 </div>
             );
         }

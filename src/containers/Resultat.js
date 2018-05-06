@@ -19,10 +19,9 @@ class Resultat extends Component{
         }
     }
 
-    // Todo Charger par defaut une playlist
-    componentDidMount() {
-        console.log('loading');
+    componentWillMount() {
         this.props.getData();
+        console.log('yeep');
     }
 
     menuContext(item){

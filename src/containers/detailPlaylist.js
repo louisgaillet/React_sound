@@ -9,9 +9,14 @@ import ListItem from "../components/list_item"
 class detailPlaylist extends Component {
     constructor(props) {
         super(props);
-        this.state = {  };
+        this.state = { 
+            context : {
+                name : "playlist",
+                id : this.props.match.params.id
+            }
+        };
     }
-
+    
     componentWillMount(){
         const playlist_id =this.props.match.params.id
         auth.onAuthStateChanged(authUser => {
@@ -22,21 +27,19 @@ class detailPlaylist extends Component {
     componentWillReceiveProps(nextProps) {
         const { match } = this.props
         const { match: nextMatch } = nextProps
-    
         if ( match.params.id !== nextMatch.params.id ) {
-            const playlist_id =this.props.match.params.id
+            const playlist_id =nextMatch.params.id
             auth.onAuthStateChanged(authUser => {
                 this.props.getSongsToPlaylists(authUser.uid, playlist_id)
             });
         }
     }
 
-
     renderSongs(){
         const songs = this.props.songs;
         if(songs){
             return Object.entries(songs).map((result) => {
-                return <ListItem key={result[1].id.videoId + Math.floor(Math.random() * 11)} result={result[1]} />
+                return <ListItem key={result[1].id.videoId + Math.floor(Math.random() * 11)} result={result[1]} context={this.state.context}/>
                 // console.log(result[1])
             })
         }
@@ -44,7 +47,7 @@ class detailPlaylist extends Component {
 
     render() {
         return (
-            <div>
+            <div >
                 <ul className='tracks'>
                     {this.renderSongs()}
                 </ul>

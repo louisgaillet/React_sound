@@ -18,6 +18,11 @@ class SearchBar extends Component{
         this.props.getData(e.target.value)
         this.props.history.push(routes.RESULTS);
     }
+
+    prev(){
+        this.props.history.goBack();
+    }
+
     
     renderResult(){
         const results = this.props.results;
@@ -29,7 +34,10 @@ class SearchBar extends Component{
 
     render(){
         return (
-            <div className="header">
+            <div className="header flex layout horizontal">
+                <div className="mr-2 go-back" onClick= {(e) => this.prev()}>
+                    <i className="fas fa-chevron-left"></i>
+                </div>
                 <div className="search">
                     <input type="text" onChange={(e) => this.search(e)} placeholder="Rechercher ..."/>
                 </div>

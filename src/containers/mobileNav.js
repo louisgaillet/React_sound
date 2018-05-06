@@ -17,9 +17,11 @@ class mobileNav extends Component {
                         <span>Accueil</span>
                     </Link>
                     </li>
-                    <li className="layout vertical center center">
+                    <li>
+                    <Link to={routes.LISTPLAYLISTS} className="layout vertical center center">
                         <i className="fas fa-music"></i>
                         <span>Playlists</span>
+                    </Link>
                     </li>
                     <li className="layout vertical center center">
                         <i className="fas fa-users"></i>
