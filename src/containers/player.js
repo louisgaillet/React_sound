@@ -142,7 +142,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch){
-    return bindActionCreators({gestionLecteur, nextSongs,},dispatch)
+    return bindActionCreators({gestionLecteur, nextSongs,prevSongs},dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Player);

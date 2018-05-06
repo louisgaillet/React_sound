@@ -134,7 +134,6 @@ export function prevSongs(){
         var currentList = getState().currentList;
         var currentSong = getState().currentSong;
         const index = currentList.map(function(song) { return song.id.videoId}).indexOf(currentSong.id.videoId);
-        if(index >= currentList.length)
             dispatch({type:types.ADD_TO_CURRENT_SONG, payload:currentList[index-1]})
       }
 }
