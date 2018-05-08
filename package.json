@@ -51,6 +51,7 @@
     "redux": "^3.0.4",
     "redux-thunk": "^2.2.0",
     "youtube-api-search": "0.0.5",
+    "youtube-dl": "^1.12.2",
     "youtube-search-api-with-axios": "^2.0.0"
   }
 }

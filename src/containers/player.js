@@ -113,7 +113,7 @@ class  Player extends Component {
                     onProgress={this.onProgress}
                     onDuration={this.onDuration}
                     onSeek={e => console.log('onSeek', e)}
-                    onEnded={this.onEnded}
+                    onEnded={this.next}
                     onError={e => console.log('onError', e)}
                     /> 
             </div> 
