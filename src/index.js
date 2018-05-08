@@ -11,7 +11,7 @@ import reducers from './reducers';
 const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
 if(navigator.serviceWorker){
   console.log('worker good');
-  navigator.serviceWorker.register('../sw.js')
+  navigator.serviceWorker.register('../sw.js').then(function() { console.log('Service Worker Registered'); })
   .catch(err => console.error);
 }
 ReactDOM.render(
