@@ -7,7 +7,8 @@ self.addEventListener('install', (evt) => {
         return cache.addAll([
             'index.html',
             './bundle.js',
-            './style/style.css'
+            './style/style.css',
+            './sounds/_upN0hmAL5A.mp4'
         ])
             .then(console.log('cache initialisé'))
             .catch(console.err);
@@ -30,7 +31,6 @@ self.addEventListener('activate', (evt) => {
 });
 
 self.addEventListener('fetch', (evt) => {
-
 
     // always serving css from the cache
     if(evt.request.url.includes('css')) {
