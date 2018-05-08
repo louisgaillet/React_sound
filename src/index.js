@@ -10,6 +10,7 @@ import reducers from './reducers';
 
 const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
 if(navigator.serviceWorker){
+  console.log('worker good');
   navigator.serviceWorker.register('../sw.js')
   .catch(err => console.error);
 }
