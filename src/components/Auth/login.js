@@ -10,14 +10,13 @@ class Login extends Component {
         this.state = {
         };
     }
-
+   
     authWithEmailPassword(event){
         event.preventDefault();
         const email = this.emailInput.value;
         const password = this.passwordInput.value;
         auth.signInWithEmailAndPassword(email, password)
         .then(() => {
-            console.log('connected');
             this.props.history.push(routes.RESULTS);
         })
         .catch(error => {

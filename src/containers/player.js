@@ -5,6 +5,8 @@ import {connect} from "react-redux"
 import { bindActionCreators } from 'redux'
 import {gestionLecteur,nextSongs, prevSongs} from '../actions/index'
 import Duration from '../components/player/duration'
+import {Link } from 'react-router-dom'
+import * as routes from '../config/routes'
 
 import DetailCurrent from '../components/player/detail_current'
 const END_POINT = "https://www.youtube.com/watch?v="
@@ -71,16 +73,20 @@ class  Player extends Component {
         return ( 
             <div>
                 <div className="current-track">
-                    <div className="current-track__left col-xs-6 col-md-4 ">
+                    <div>
+                    {currentSong ?
+                    <Link to={`${routes.MOBILEPLAYER}`}><span className="d-none d-block d-md-none text-white"><i className="fa fa-chevron-up"></i></span></Link>  : '' }  
+                    </div>
+                    <div className="current-track__left col-xs-6 col-md-4 ">                    
                         <DetailCurrent currentDetail={currentSong}/>
                     </div>
                     <div className="current-track__actions  col-xs-6 col-md-4 ">
                         <div className="player-controls_buttons">
-                            <a onClick={this.prev}><i className="fa fa-step-backward"></i></a>
+                            <a onClick={this.prev} className="prev"><i className="fa fa-step-backward"></i></a>
                             <a className="play" onClick={this.playPause}>
                                 {!player? <i className="fa fa-play"></i> : <i className="fa fa-pause"></i>}
                             </a>
-                            <a  onClick={this.next}><i className="fa fa-step-forward"></i></a>  
+                            <a  onClick={this.next} className="next"><i className="fa fa-step-forward"></i></a>  
                         </div>
                         <div className="playback-bar d-flex justify-content-between align-items-center">
                             <div className="playback-bar__progress-time"> <Duration seconds={this.state.duration * this.state.played} /></div>

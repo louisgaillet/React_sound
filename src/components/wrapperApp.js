@@ -7,6 +7,7 @@ import Player from '../containers/player'
 import CurrentList from '../containers/currentList'
 import detailPlaylist from '../containers/detailPlaylist'
 import MobileNav from '../containers/mobileNav'
+import MobilePlayer from '../containers/mobilePlayer'
 import PlayLists from '../containers/playlists'
 import * as routes from '../config/routes'
 
@@ -25,7 +26,7 @@ const wrapperApp = () => (
                     <Route exact path={routes.CURRENTLIST} component={CurrentList}/>
                     <Route exact path={routes.LISTPLAYLISTS} component={PlayLists}/>
                     <Route  path={routes.DETAILPLAYLIST+'/:id'} component={detailPlaylist}/>
-                    
+                    <Route  path={routes.MOBILEPLAYER} component={MobilePlayer}/>
                 </Switch>
           </div>
       </div>

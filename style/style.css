@@ -251,6 +251,13 @@ h2{
     text-transform: uppercase;
 }
 
+.player .track__title{
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
 .context-menu{
     position: fixed;
     right: 0;
@@ -442,7 +449,21 @@ h2{
     opacity: 1;
 }
 
+.player-mobile .current-track__actions .player-controls_buttons .play{
+    font-size: 23px;
+    width: 44px;
+    height: 44px;
+    line-height: 44px;
+}
 
+.player-mobile img {
+    max-height: 39vh;
+    margin-top: 26px;
+}
+
+.player-mobile .current-track__actions .player-controls_buttons a{
+    font-size: 18px;
+}
 input[type=range] {
     -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
     width: 100%; /* Specific width is required for Firefox. */
@@ -541,13 +562,13 @@ input[type=range]::-webkit-slider-thumb {
 
 @media (max-width: 768px) { 
     .player{
-        border-bottom: 2px solid black;
-        height: 45px;
-        bottom: 58px;
+        height: 55px;
+        bottom: 46px;
     }
 
     .player .current-track {
         min-height: 55px;
+        border-bottom: 2px solid #000;
     }
 
     .player .current-track .medium-picture{
@@ -557,5 +578,29 @@ input[type=range]::-webkit-slider-thumb {
 
     .player .playback-bar{
         display: none !important;
+    }
+
+    .player .track__title{
+        max-width: 120px;
+    }
+
+    .player .next, .player .prev{
+        display: none;
+    }
+
+    .player .player-controls_buttons,.player .current-track__actions {
+        justify-content: flex-end;
+        margin-bottom: 0;
+        width: auto;
+    }
+
+    .player .current-track__left {
+        display: flex;
+        justify-content: center;
+    }
+
+    .playlists-list li {
+        font-size: 1.3rem;
+        border: none;
     }
 }

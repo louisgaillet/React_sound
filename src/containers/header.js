@@ -17,13 +17,13 @@ class Header extends Component {
         if(this.props.isConnected){
             return (
                 <div className ="user">
-                    {this.props.user.email}
+                    {/* {this.props.user.email} */}
                 </div>
             );
         }else{
             return (
                 <div className = "user">
-                    Se connecter
+                    {/* Se connecter */}
                 </div>
             );
         }
