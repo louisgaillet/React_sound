@@ -25,7 +25,7 @@ class PlayListItem extends Component {
       {this.props.style ?
         <li className="list-group-item bg-transparent">
         <Link to={`${routes.DETAILPLAYLIST}/${this.props.id}`}>{this.props.name}</Link></li>
-        : <p onClick={(e) => props.callback(this.props.id)}>{this.props.name}</p>
+        : <p onClick={(e) => this.props.callback(this.props.id)}>{this.props.name}</p>
       }
       </div>
     );

@@ -6,7 +6,7 @@ const DetailCurrent = (props) => {
         return (
             <div className="layout horizontal">
                 <img className="medium-picture" src={currentDetail.snippet.thumbnails.default.url}/>
-                <span className="track__title layout vertical center-center">
+                <span className="track__title text-truncate">
                     {currentDetail.snippet.title.toLowerCase()}    
                 </span>
             </div>
