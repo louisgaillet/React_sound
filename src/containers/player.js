@@ -4,11 +4,14 @@ import Nouislider from 'react-nouislider';
 import {connect} from "react-redux"
 import { bindActionCreators } from 'redux'
 import {gestionLecteur,nextSongs, prevSongs} from '../actions/index'
+import ReactTouchEvents from "react-touch-events";
+import BarProgress from '../components/player/bar_progress'
 import Duration from '../components/player/duration'
 import {Link } from 'react-router-dom'
 import * as routes from '../config/routes'
 
 import DetailCurrent from '../components/player/detail_current'
+import MobilePlayer from './mobilePlayer';
 const END_POINT = "https://www.youtube.com/watch?v="
 
 class  Player extends Component {
@@ -17,7 +20,8 @@ class  Player extends Component {
         this.state = {
             playing: false,
             played : 0,
-            duration : 0
+            duration : 0,
+            togglePlayerMobile : false
           }
     }
     
@@ -57,6 +61,25 @@ class  Player extends Component {
         this.setState({ duration })
     }
 
+    handleSwipe (direction) {
+    
+        switch (direction) {
+            case "left":
+                this.props.nextSongs();
+            break;
+            case "right":
+                this.props.prevSongs();
+            break;
+        
+        }
+    }
+
+    togglePlayerMobile = () => {
+        console.log(!this.state.togglePlayerMobile);
+        this.setState({togglePlayerMobile: !this.state.togglePlayerMobile
+        })
+    }
+
 
     renderPlayer(){
         const {currentList} = this.props;
@@ -72,14 +95,21 @@ class  Player extends Component {
         }
         return ( 
             <div>
+                <MobilePlayer visibility={this.state.togglePlayerMobile} duration={this.state.duration * this.state.played} played={this.state.played} onSeekMouseDown={this.onSeekMouseDown} onSeekChange={this.onSeekChange} onSeekMouseUp={this.onSeekMouseUp}/>
                 <div className="current-track">
                     <div>
                     {currentSong ?
-                    <Link to={`${routes.MOBILEPLAYER}`}><span className="d-none d-block d-md-none text-white"><i className="fa fa-chevron-up"></i></span></Link>  : '' }  
+                    <span className="d-none d-block d-md-none text-white" onClick={this.togglePlayerMobile}>
+                        <i className="fa fa-chevron-up"></i>
+                    </span>: '' }  
                     </div>
-                    <div className="current-track__left col-xs-6 col-md-4 ">                    
-                        <DetailCurrent currentDetail={currentSong}/>
-                    </div>
+                    <ReactTouchEvents
+                        onSwipe={ this.handleSwipe.bind(this) }
+                    >
+                        <div className="current-track__left col-xs-6 col-md-4 ">                    
+                            <DetailCurrent currentDetail={currentSong}/>
+                        </div>
+                    </ReactTouchEvents>
                     <div className="current-track__actions  col-xs-6 col-md-4 ">
                         <div className="player-controls_buttons">
                             <a onClick={this.prev} className="prev"><i className="fa fa-step-backward"></i></a>
@@ -88,24 +118,8 @@ class  Player extends Component {
                             </a>
                             <a  onClick={this.next} className="next"><i className="fa fa-step-forward"></i></a>  
                         </div>
-                        <div className="playback-bar d-flex justify-content-between align-items-center">
-                            <div className="playback-bar__progress-time"> <Duration seconds={this.state.duration * this.state.played} /></div>
-                           
-                            <div className="custom-progress-bar flex">
-                                <input
-                                    className = "with-progress"
-                                    type='range' min={0} max={1} step='any'
-                                    progess max = {1}
-                                    value={this.state.played}
-                                    onMouseDown={this.onSeekMouseDown}
-                                    onChange={this.onSeekChange}
-                                    onMouseUp={this.onSeekMouseUp}
-                                />
-                                 <div className="progress">
-                                    <div className="progress-bar  bg-success" role="progressbar" style={style} aria-valuenow={this.state.played *100} aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                            </div>
-                            <div className="playback-bar__progress-time"> <Duration seconds={this.state.duration} /></div> 
+                        <div className="playback-bar d-flex justify-content-between align-items-center hidden_xs">
+                            <BarProgress duration={this.state.duration * this.state.played} played={this.state.played} onSeekMouseDown={this.onSeekMouseDown} onSeekChange={this.onSeekChange} onSeekMouseUp={this.onSeekMouseUp}/>
                         </div>
                     </div>
                 </div> 

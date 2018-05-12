@@ -1,12 +1,12 @@
 {
-  "name": "react-redux-pack-demarrage",
+  "name": "react_sound",
   "version": "1.0.0",
-  "description": "Un pack de démarrage pour React + Redux",
+  "description": "Une sorte de spotify basé sur l'api youtube",
   "main": "index.js",
   "repository": "",
   "scripts": {
-    "dev": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
-    "postinstall": "webpack -p",
+    "dev": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js ",
+    "postinstall": "webpack -p ",
     "start": "node server.js",
     "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive ./test",
     "test:watch": "npm run test -- --watch"
@@ -24,6 +24,7 @@
     "jsdom": "^8.1.0",
     "mocha": "^2.4.5",
     "node-sass": "^4.9.0",
+    "offline-plugin": "^5.0.3",
     "react-addons-test-utils": "^0.14.7",
     "sass-loader": "^6.0.7",
     "webpack": "^1.12.9",
@@ -52,6 +53,8 @@
     "redux-thunk": "^2.2.0",
     "youtube-api-search": "0.0.5",
     "youtube-dl": "^1.12.2",
-    "youtube-search-api-with-axios": "^2.0.0"
+    "youtube-search-api-with-axios": "^2.0.0",
+    "react-transition-group": "^2.3.1",
+    "react-touch-events": "^2.1.0"
   }
 }
