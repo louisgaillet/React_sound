@@ -11,7 +11,7 @@ class MobilePlayer extends Component {
         super(props);
         this.state = {  };
     }
-    
+
 
     playPause = () => {
         this.setState({playing: !this.state.playing}, () => {
@@ -43,18 +43,20 @@ class MobilePlayer extends Component {
     render() {
         const {currentSong} = this.props;
         var {player} = this.props;
+    
         if(currentSong && this.props.visibility === true){
             return (
                 <ReactTouchEvents
                 onSwipe={ this.handleSwipe.bind(this) }
                 >
                 <div className="text-white layout vertical center player-mobile">
+                    <span className = 'closeMobilePlayer'  onClick={this.props.togglePlayerMobile}><i className="fa fa-chevron-down"></i></span>
                     <div>
                         <img className="" src={currentSong.snippet.thumbnails.high.url}/>                    
                     </div>
                     <div style={{width :80 + '%'}} className="text-center" > 
-                        <div>
-                            <span className="track__title layout vertical center-center mt-4 ">
+                        <div >
+                            <span>
                                 {currentSong.snippet.title.toLowerCase()}    
                             </span>
                         </div>

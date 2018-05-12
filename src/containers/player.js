@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import ReactPlayer from 'react-player'
-import Nouislider from 'react-nouislider';
 import {connect} from "react-redux"
 import { bindActionCreators } from 'redux'
 import {gestionLecteur,nextSongs, prevSongs} from '../actions/index'
@@ -57,6 +56,11 @@ class  Player extends Component {
         this.player.seekTo(parseFloat(e.target.value))
     }
 
+    onSeekMouseDown = e => {
+        this.setState({ seeking: false })
+        this.player.seekTo(parseFloat(e.target.value))
+    }
+
     onDuration = (duration) => {
         this.setState({ duration })
     }
@@ -75,11 +79,9 @@ class  Player extends Component {
     }
 
     togglePlayerMobile = () => {
-        console.log(!this.state.togglePlayerMobile);
         this.setState({togglePlayerMobile: !this.state.togglePlayerMobile
         })
     }
-
 
     renderPlayer(){
         const {currentList} = this.props;
@@ -95,11 +97,18 @@ class  Player extends Component {
         }
         return ( 
             <div>
-                <MobilePlayer visibility={this.state.togglePlayerMobile} duration={this.state.duration * this.state.played} played={this.state.played} onSeekMouseDown={this.onSeekMouseDown} onSeekChange={this.onSeekChange} onSeekMouseUp={this.onSeekMouseUp}/>
+                <MobilePlayer 
+                    visibility={this.state.togglePlayerMobile} 
+                    duration={this.state.duration * this.state.played} 
+                    played={this.state.played}
+                    onSeekMouseDown={this.onSeekMouseDown} 
+                    onSeekChange={this.onSeekChange} 
+                    onSeekMouseUp={this.onSeekMouseUp} 
+                    togglePlayerMobile={this.togglePlayerMobile}/>
                 <div className="current-track">
                     <div>
                     {currentSong ?
-                    <span className="d-none d-block d-md-none text-white" onClick={this.togglePlayerMobile}>
+                    <span className="d-none d-block d-md-none text-white openMobilePlayer" onClick={this.togglePlayerMobile}>
                         <i className="fa fa-chevron-up"></i>
                     </span>: '' }  
                     </div>
@@ -119,7 +128,12 @@ class  Player extends Component {
                             <a  onClick={this.next} className="next"><i className="fa fa-step-forward"></i></a>  
                         </div>
                         <div className="playback-bar d-flex justify-content-between align-items-center hidden_xs">
-                            <BarProgress duration={this.state.duration * this.state.played} played={this.state.played} onSeekMouseDown={this.onSeekMouseDown} onSeekChange={this.onSeekChange} onSeekMouseUp={this.onSeekMouseUp}/>
+                            <BarProgress 
+                                duration={this.state.duration * this.state.played} 
+                                played={this.state.played} 
+                                onSeekMouseDown={this.onSeekMouseDown} 
+                                onSeekChange={this.onSeekChange} 
+                                onSeekMouseUp={this.onSeekMouseUp}/>
                         </div>
                     </div>
                 </div> 

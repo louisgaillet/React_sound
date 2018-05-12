@@ -10,7 +10,7 @@ const BarProgress = ({duration, played, onSeekMouseDown, onSeekChange, onSeekMou
                         className = "with-progress"
                         type='range' min={0} max={1} step='any'
                         progess max = {1}
-                        value={played}
+                        defaultValue={played}
                         onMouseDown={onSeekMouseDown}
                         onChange={onSeekChange}
                         onMouseUp={onSeekMouseUp}

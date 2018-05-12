@@ -459,7 +459,17 @@ h2{
     background: black;
     z-index: 9;
 }
+.player-mobile .closeMobilePlayer{
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 1.3rem;
+}
 
+.openMobilePlayer{
+    font-size : 1.3rem;
+    cursor: pointer;
+}
 .player-mobile .current-track__actions .player-controls_buttons .play{
     font-size: 23px;
     width: 44px;
