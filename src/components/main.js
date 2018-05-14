@@ -50,8 +50,8 @@ class Main extends Component {
     return this.state.loading === true ? <h1>Loading</h1> : (
       <main>
         <Switch>
-          <PrivateRoute exact path={routes.LOGIN}  component={Login}/>
-          <PrivateRoute path={routes.APP} authed={this.state.authed}  component={wrapperApp}  />
+          <Route exact path={routes.LOGIN}  component={Login}/>
+          <PrivateRoute path='/' authed={this.state.authed}  component={wrapperApp}  />
         </Switch>
       </main>
     );

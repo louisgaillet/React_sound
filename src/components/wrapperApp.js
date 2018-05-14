@@ -21,10 +21,10 @@ const wrapperApp = () => (
           </div>
           <div className="main-view-container">
                 <Switch>
-                    <Route exact path={routes.APP} component={Resultat}/> 
+                    <Route exact path='/' component={Resultat}/> 
                     <Route exact path={routes.RESULTS} component={Resultat}/> 
                     <Route exact path={routes.CURRENTLIST} component={CurrentList}/>
-                    <Route exact path={routes.LISTPLAYLISTS} component={PlayLists}/>
+                    <Route exact path={routes.LISTPLAYLISTS}  component={PlayLists}/>
                     <Route  path={routes.DETAILPLAYLIST+'/:id'} component={detailPlaylist}/>
                     <Route  path={routes.MOBILEPLAYER} component={MobilePlayer}/>
                 </Switch>
