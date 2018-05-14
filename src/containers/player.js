@@ -62,7 +62,8 @@ class  Player extends Component {
     }
 
     onDuration = (duration) => {
-        this.setState({ duration })
+        this.setState({ duration : this.player.getDuration()})
+        console.log(this.player.getDuration())
     }
 
     handleSwipe (direction) {
@@ -99,7 +100,7 @@ class  Player extends Component {
             <div>
                 <MobilePlayer 
                     visibility={this.state.togglePlayerMobile} 
-                    duration={this.state.duration * this.state.played} 
+                    duration={this.state.duration} 
                     played={this.state.played}
                     onSeekMouseDown={this.onSeekMouseDown} 
                     onSeekChange={this.onSeekChange} 
@@ -129,7 +130,7 @@ class  Player extends Component {
                         </div>
                         <div className="playback-bar d-flex justify-content-between align-items-center hidden_xs">
                             <BarProgress 
-                                duration={this.state.duration * this.state.played} 
+                                duration={this.state.duration} 
                                 played={this.state.played} 
                                 onSeekMouseDown={this.onSeekMouseDown} 
                                 onSeekChange={this.onSeekChange} 
