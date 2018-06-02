@@ -343,7 +343,6 @@ h2{
     right: 5px;
     width: 200px !important;
     height: 200px !important;
-    display: none;
 }
 
 
@@ -582,6 +581,10 @@ input[type=range]::-webkit-slider-thumb {
 }
 
 @media (max-width: 768px) { 
+    .react-player{
+        display: none;
+    }
+    
     .player{
         height: 55px;
         bottom: 46px;

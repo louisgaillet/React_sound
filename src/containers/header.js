@@ -1,16 +1,20 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux'
 import {connect} from "react-redux"
+import {auth, base} from '../firebase/base'
 
-import {isConnected} from '../actions/index'
+import {isConnected, getPlaylists, initApp} from '../actions/index'
 
 class Header extends Component {
     constructor(props) {
         super(props);
         this.state = {  };
     }
-    componentWillMount(){
+    componentDidMount(){
         this.props.isConnected();
+        auth.onAuthStateChanged(authUser => {
+            this.props.getPlaylists(authUser.uid);
+        });
     }
 
     render() {
@@ -33,12 +37,13 @@ class Header extends Component {
 function mapStateToProps(state) {
     return {
         connected: state.connected,
-        user : state.user
+        user : state.user,
+        playlists : state.playlists,
     }
 }
 
 function mapDispatchToProps(dispatch){
-    return bindActionCreators({isConnected},dispatch)
+    return bindActionCreators({isConnected, getPlaylists, initApp},dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

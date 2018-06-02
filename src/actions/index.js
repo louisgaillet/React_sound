@@ -11,10 +11,19 @@ import {auth, base} from '../firebase/base'
 const API_END_POINT = "https://www.googleapis.com/youtube/v3/search"
 const API_KEY = "?key=AIzaSyAsM52E5tQqtI1_aVhdUSRLtoSQCj5r3L4"
 
+export function initApp(){
+    return function (dispatch, getState){
+        const playlists = getState().playlists.playlists;
+        const firstPlaylist = playlists[Object.keys(playlists)[1]].songs;
+        let currentSong = firstPlaylist[Object.keys(firstPlaylist)[0]];
+        dispatch({type:types.ADD_TO_CURRENT_SONG, payload:currentSong})
+    }
+}
 export function getData(search="the strokes"){
      return function (dispatch) {
         axios.get(`${API_END_POINT}/${API_KEY}&part=snippet&maxResults=10&type=video&q=${search}`)
         .then(function(response){
+            dispatch({type:types.ADD_TO_CURRENT_SONG, payload:response.data.items[0]})
             dispatch({type : GET_DATA,payload:response.data.items})
         }) 
     }
@@ -25,8 +34,6 @@ export function addToCurrentList(item){
         dispatch({type:ADD_TO_CURRENT_LIST, payload:item})
     }
 }
-
-
 
 
 export function addToCurrentSong(item, context=null){

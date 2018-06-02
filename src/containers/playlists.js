@@ -11,11 +11,12 @@ class PlayLists extends Component{
         super(props);
     }
 
-    componentDidMount() {
-        auth.onAuthStateChanged(authUser => {
-            this.props.getPlaylists(authUser.uid)
-        });
-    }
+    // componentDidMount() {
+    //     auth.onAuthStateChanged(authUser => {
+    //         this.props.getPlaylists(authUser.uid)
+    //     });
+    //     console.log('playlists');
+    // }
 
     render(){
         return (
