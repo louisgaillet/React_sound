@@ -567,6 +567,10 @@ input[type=range]::-webkit-slider-thumb {
     padding-top: 2px;
 }
 
+.thumbnail_playlist{
+    display: none;
+}
+
 /* 
 @media only screen and (min-width: 600px) {
     .collapse {
@@ -581,6 +585,22 @@ input[type=range]::-webkit-slider-thumb {
 }
 
 @media (max-width: 768px) { 
+    .thumbnail_playlist{
+        display: flex;
+        width: 60px;
+        flex-wrap: wrap;
+    }
+
+    .thumbnail_playlist .wrapper_image{
+        width: 30px;
+        height: 30px;
+        overflow: hidden;
+    }
+    .thumbnail_playlist .wrapper_image .small-picture{
+        transform: scale(1.5);
+        width: 30px;
+        height: 30px;;
+    }
     .react-player{
         display: none;
     }

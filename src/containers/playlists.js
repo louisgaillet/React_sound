@@ -36,7 +36,7 @@ class PlayLists extends Component{
     renderPlaylists(){
         const playlists = this.props.playlists.playlists;
         return Object.entries(playlists).map(([key,playlist])=>{
-            return <PlayListItem key={key} id={key} name={playlist.name} callback='' style="list"/> 
+            return <PlayListItem key={key} songs={playlist.songs} id={key} name={playlist.name} callback=''  style="list"/> 
         }) 
     }
 };
