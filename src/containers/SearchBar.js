@@ -11,12 +11,16 @@ import * as routes from '../config/routes'
 class SearchBar extends Component{
     constructor(props){
         super(props);
+        this.state = { search : '' };
     }
 
 
     search(e){
-        this.props.getData(e.target.value)
-        this.props.history.push(routes.RESULTS);
+        this.setState({search:e.target.value});
+        setTimeout(function(e) { 
+            this.props.getData(this.state.search)
+            this.props.history.push(routes.RESULTS);
+        }.bind(this), 800);
     }
 
     prev(){
