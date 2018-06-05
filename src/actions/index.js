@@ -94,6 +94,18 @@ export function createPlaylist(user_id,name) {
     }
 }
 
+export function removePlaylist(playlist_id){
+    return function(dispatch, getState){
+        const user_id = getState().user.uid;
+        var ref = base.ref(user_id+'/playlists/'+playlist_id);
+        ref.remove().then(function(){
+            console.log('deleted')
+        }).catch(function(error){
+            console.log('error');
+        });
+    }
+}
+
 export function getPlaylists(user_id){
     return function(dispatch){
         const rootRef = base.ref();

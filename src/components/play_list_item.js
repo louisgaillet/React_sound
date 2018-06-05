@@ -23,11 +23,10 @@ class PlayListItem extends Component {
     const songs = this.props.songs;
     if (songs){
       let pictures = Object.entries(songs).map(([key,song])=>{
-        return song.snippet.thumbnails.default;
+        return song.snippet.thumbnails.medium;
       });
-      if(pictures.length >= 4)
+      if(pictures.length >= 4){
         pictures = pictures.slice(5);
-      
         return (
           pictures.map(picture => {
             return (
@@ -37,6 +36,12 @@ class PlayListItem extends Component {
             )
           })
         )
+      }else{
+        return (
+                <img className="full-picture" src={pictures[0].url}/>
+            )
+
+      }
     }
   }
   render() {
@@ -44,10 +49,11 @@ class PlayListItem extends Component {
       <div>
         {/* <span onClick={ (e) => this.download()}> Download</span> */}
       {this.props.style ?
-        <li className="list-group-item bg-transparent d-flex align-items-center  mb-3">
+        <li className="list-group-item bg-transparent d-flex align-items-center  mb-1">
         <div className="thumbnail_playlist mr-3">
           {this.renderThumbnailPlaylist()}
         </div>
+        
         <Link to={`${routes.DETAILPLAYLIST}/${this.props.id}`}>{this.props.name}</Link></li>
         : <p onClick={(e) => this.props.callback(this.props.id)}>{this.props.name}</p>
       }

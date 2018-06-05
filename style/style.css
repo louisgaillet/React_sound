@@ -187,6 +187,12 @@ h2{
     border: 1px solid white;
 }
 
+.full-picture{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
 .header{
     background: #282828;
     padding: 10px;
@@ -588,6 +594,7 @@ input[type=range]::-webkit-slider-thumb {
     .thumbnail_playlist{
         display: flex;
         width: 60px;
+        height: 60px;;
         flex-wrap: wrap;
     }
 
@@ -599,7 +606,8 @@ input[type=range]::-webkit-slider-thumb {
     .thumbnail_playlist .wrapper_image .small-picture{
         transform: scale(1.5);
         width: 30px;
-        height: 30px;;
+        height: 30px;
+        border: none;
     }
     .react-player{
         display: none;
