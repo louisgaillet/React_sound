@@ -60,6 +60,28 @@ export function addToCurrentSong(item, context=null){
     }
 }
 
+export function randomPlaylist(playlist_id){
+    return (dispatch, getState) => {
+        let songs = Object.entries(getState().getSongToPlaylist);
+        let songs_to_add = shuffle(songs)
+        songs_to_add.forEach(function (item) {
+            dispatch({type:ADD_TO_CURRENT_LIST, payload:item[1]})
+        });
+        dispatch({type:types.ADD_TO_CURRENT_SONG, payload: songs_to_add[0][1]})
+    }
+}
+
+function shuffle(a) {
+    var j, x, i;
+    for (i = a.length - 1; i > 0; i--) {
+        j = Math.floor(Math.random() * (i + 1));
+        x = a[i];
+        a[i] = a[j];
+        a[j] = x;
+    }
+    return a;
+}
+
 export function gestionLecteur(bool){
     return function(dispatch){
         dispatch({type:PLAY_LECTEUR, payload:bool})

@@ -3,7 +3,7 @@ import {connect} from "react-redux"
 import { bindActionCreators } from 'redux'
 import {auth} from '../firebase/base'
 
-import {getSongsToPlaylists, removePlaylist} from "../actions/index"
+import {getSongsToPlaylists, removePlaylist, randomPlaylist} from "../actions/index"
 import ListItem from "../components/list_item"
 
 class detailPlaylist extends Component {
@@ -39,6 +39,10 @@ class detailPlaylist extends Component {
         this.props.removePlaylist(this.props.match.params.id)
     }
 
+    randomPlaylist(){
+        this.props.randomPlaylist(this.props.match.params.id)
+    }
+
     renderSongs(){
         const songs = this.props.songs;
         if(songs){
@@ -55,6 +59,9 @@ class detailPlaylist extends Component {
                 <div className="text-right mr-3 mt-3">
                     <span className="badge badge-danger font-weight-bold px-2 py-2" onClick = { (e) => this.deletePlaylist()}>Supprimer la playlist</span>
                 </div>
+                <div className="text-center">
+                <button type="button" className="btn btn-success ml-2 btn-rounded" onClick = { () => this.randomPlaylist()}>LECTURE ALEATOIRE</button>
+                </div>
                 <ul className='tracks'>
                     {this.renderSongs()}
                 </ul>
@@ -70,7 +77,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch){
-    return bindActionCreators({getSongsToPlaylists, removePlaylist}, dispatch)
+    return bindActionCreators({getSongsToPlaylists, removePlaylist, randomPlaylist}, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(detailPlaylist)
