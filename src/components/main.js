@@ -47,7 +47,14 @@ class Main extends Component {
 
   render() {
     
-    return this.state.loading === true ? <h1>Loading</h1> : (
+    return this.state.loading === true ? 
+    <div className="form-group">
+        <div className="col-md-12 text-center text-white container-loader">
+          <p><i className="fas fa-spinner fa-spin"></i>
+          </p>
+        </div>
+    </div >
+    : (
       <main>
         <Switch>
           <Route exact path={routes.LOGIN}  component={Login}/>

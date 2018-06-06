@@ -73,6 +73,24 @@ input, input:focus{
     right: 13px;
     top: 6px;
 }
+
+/* Main */
+main{
+    padding-bottom: 120px;
+}
+/* lOADING */
+.container-loader{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    height: 100vh;
+    font-size: 2rem;
+}
 /* PROGRESSBAR */
 .progress{
     height: 4px;
@@ -98,7 +116,7 @@ h2{
 }
 
 .main-view-container{
-    overflow: scroll;
+    overflow-y: scroll;
     width: 100%;
 }
 
