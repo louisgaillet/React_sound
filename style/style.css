@@ -585,7 +585,17 @@ input[type=range]::-webkit-slider-thumb {
 .playlists-list{
     padding: 0;
 }
+.playlists-list a, .playlists-list .item-playlist  {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: flex-end;
+}
 
+.playlists-list .item-playlist{
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
 .playlists-list li {
     padding-bottom: 2px;
     padding-top: 2px;
@@ -595,6 +605,22 @@ input[type=range]::-webkit-slider-thumb {
     display: none;
 }
 
+/* Context menu */
+
+.open-menu-trigger{
+    cursor: pointer;
+}
+
+.react-contextmenu--visible{
+    background: #282828;
+    padding: 13px;
+    z-index: 9999;
+}
+
+.react-contextmenu-item{
+    padding: 8px;
+    cursor: pointer;
+}
 /* 
 @media only screen and (min-width: 600px) {
     .collapse {
