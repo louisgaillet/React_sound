@@ -78,7 +78,7 @@ class PlayListItem extends Component {
     return (
       <div>
         <ContextMenuTrigger ref={(c) => this.contextTrigger = c} id={id}>
-          <span onClick={this.toggleMenu} className="text-white mr-4 pl-2 pr-2 open-menu-trigger"><i className="fas fa-ellipsis-v"></i></span>
+          <span onClick={this.toggleMenu} className="text-mutted mr-4 pl-2 pr-2 open-menu-trigger"><i className="fas fa-ellipsis-v"></i></span>
         </ContextMenuTrigger>
 
         <ContextMenu id={id}>
@@ -96,9 +96,13 @@ class PlayListItem extends Component {
   render() {
     return (
       <div className="item-playlist">
-        {this.renderMenuOptions(this.props.id)}
+        {this.props.style ? this.renderMenuOptions(this.props.id) : null}
       {this.props.style ?
-        <Link to={`${routes.DETAILPLAYLIST}/${this.props.id}`}>{this.props.name}
+        <Link to={`${routes.DETAILPLAYLIST}/${this.props.id}`}>
+          <div className="layout vertical">
+            {this.props.name}
+            <span className="text-muted">{Object.keys(this.props.songs).length > 1 ? Object.keys(this.props.songs).length +' titres' : '1 titre'}</span>
+          </div> 
           <li className="list-group-item bg-transparent d-flex align-items-center  mb-1">
             <div className="thumbnail_playlist mr-3">
               {this.renderThumbnailPlaylist()}
