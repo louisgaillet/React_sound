@@ -52,7 +52,7 @@ class GestionPlaylist extends Component {
             <div className="context-menu text-center">
                     <div className="layout vertical text-white pt-4 pb-4">
                         <button className="btn btn-transparent" onClick = { () => this.props.gestionMenu()}><svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><title>Close</title><path d="M31.098 29.794L16.955 15.65 31.097 1.51 29.683.093 15.54 14.237 1.4.094-.016 1.508 14.126 15.65-.016 29.795l1.414 1.414L15.54 17.065l14.144 14.143" fill="#FFF" fill-rule="evenodd"></path></svg></button>
-                        <div className="layout horizontal center-center pb-4">
+                        <div className="layout horizontal center-center pb-4 wrap">
                             <h1 className="mr-2"> Ajouter à la playlist</h1>  
                             <button type="button" className="btn btn-success ml-2 btn-rounded" onClick = { () => this.openMenuAddPlaylist()}>NOUVELLE PLAYLIST</button>
                         </div>

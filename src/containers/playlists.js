@@ -28,7 +28,7 @@ class PlayLists extends Component{
                         {this.renderPlaylists()}
                     </ul>
                 </div>    
-                : 'Aucune playlist'}
+                : <div className="text-center text-white">Aucune playlist</div>}
             </div>
         )
     }

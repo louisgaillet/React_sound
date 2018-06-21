@@ -20,7 +20,7 @@ class PlayListItem extends Component {
 
   ref = contextTrigger => {
     this.contextTrigger = contextTrigger
-}
+  }
 
   toggleMenu = e => {
     if(this.contextTrigger) {
@@ -74,7 +74,7 @@ class PlayListItem extends Component {
   }
 
   renderMenuOptions(playlist_id){
-    const id = Math.floor(Math.random() * 11) + Math.floor(Math.random() * 11);
+    const id = Math.random().toString(36).substring(7);
     return (
       <div>
         <ContextMenuTrigger ref={(c) => this.contextTrigger = c} id={id}>

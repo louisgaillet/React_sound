@@ -100,8 +100,7 @@ class  Player extends Component {
         }
         if(playlists){
             if(currentSong == false){
-                console.log('yeep');
-                const firstPlaylist = playlists.playlists[Object.keys(playlists.playlists)[1]].songs;
+                const firstPlaylist = playlists.playlists[Object.keys(playlists.playlists)[0]].songs;
                 currentSong = firstPlaylist[Object.keys(firstPlaylist)[0]];
                 // this.props.addToCurrentList(currentSong);
             } 
